@@ -1,0 +1,337 @@
+﻿@model List<Bakery.WebUI.Dtos.Chefs.ResultChefDto>
+
+@{
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="content-wrapper about-page">
+    <div class="page-header about-header">
+        <div>
+            <h2 class="about-title">Şef Listesi</h2>
+            <p class="about-subtitle">Şef içeriklerini buradan yönetebilirsiniz.</p>
+        </div>
+
+        <a href="/Chef/CreateChef/" class="btn btn-primary about-add">
+            + Yeni Şef Ekle
+        </a>
+    </div>
+
+    <div class="about-card">
+        <div class="about-toolbar">
+            <div class="searchbox">
+                <span class="search-icon">⌕</span>
+                <input id="chefSearch" type="text" placeholder="Ad soyad veya ünvan ara..." />
+            </div>
+            <div class="counter">
+                Toplam: <strong>@Model.Count</strong>
+            </div>
+        </div>
+
+        <div class="about-table-wrap">
+            <table class="about-table" id="chefTable">
+                <thead>
+                    <tr>
+                        <th style="width: 90px;">#</th>
+                        <th>Ad Soyad</th>
+                        <th>Ünvan</th>
+                        <th>Resim</th>
+                        <th style="width: 210px;">İşlemler</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td data-label="ID">
+                                <span class="pill">#@item.chefId</span>
+                            </td>
+
+                            <td class="col-title" data-label="Name Surname">
+                                <div class="title-main">@item.nameSurname</div>
+                            </td>
+
+                            <td class="col-desc" data-label="Title">
+                                <div class="text-clamp">@item.title</div>
+                            </td>
+
+                            <td>
+                                 <img src="@item.imageUrl"
+                                 alt="Chef Image"
+                                 style="width:70px;height:70px;object-fit:cover;border-radius:12px;border:1px solid #e5e7eb;box-shadow:0 4px 10px rgba(0,0,0,0.08);" />
+                            </td>
+
+                            <td data-label="Actions">
+                                <div class="actions">
+                                    <a href="/Chef/UpdateChef/@item.chefId" class="btn btn-soft-success">Güncelle</a>
+                                    <a href="/Chef/DeleteChef/@item.chefId"
+                                       class="btn btn-soft-danger"
+                                       onclick="return confirm('Silmek istediğine emin misin?');">
+                                        Sil
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Page */
+
+    .about-page {
+        padding: 24px;
+        background: #f6f7fb;
+        min-height: 100vh;
+    }
+
+    .about-header {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 16px;
+        margin-bottom: 16px;
+    }
+
+    .about-title {
+        margin: 0;
+        font-weight: 800;
+        letter-spacing: -.02em;
+        color: #111827;
+    }
+
+    .about-subtitle {
+        margin: 6px 0 0;
+        color: #6b7280;
+    }
+
+    /* Card */
+    .about-card {
+        background: #fff;
+        border: 1px solid #eef0f4;
+        border-radius: 16px;
+        box-shadow: 0 10px 30px rgba(17,24,39,.06);
+        overflow: hidden;
+    }
+
+    /* Toolbar */
+    .about-toolbar {
+        padding: 14px 16px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        border-bottom: 1px solid #eef0f4;
+        background: linear-gradient(to bottom, #ffffff, #fbfbff);
+    }
+
+    .searchbox {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background: #f3f4f6;
+        border: 1px solid #e5e7eb;
+        border-radius: 12px;
+        padding: 10px 12px;
+        width: min(520px, 100%);
+    }
+
+        .searchbox input {
+            border: none;
+            outline: none;
+            background: transparent;
+            width: 100%;
+            color: #111827;
+            font-weight: 500;
+        }
+
+    .search-icon {
+        color: #6b7280;
+        font-size: 14px;
+    }
+
+    .counter {
+        color: #6b7280;
+        font-weight: 500;
+    }
+
+    /* Table */
+    .about-table-wrap {
+        overflow: auto;
+    }
+
+    .about-table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+    }
+
+        .about-table thead th {
+            position: sticky;
+            top: 0;
+            z-index: 2;
+            text-align: left;
+            background: #0f172a;
+            color: #fff;
+            font-weight: 700;
+            font-size: 13px;
+            letter-spacing: .02em;
+            padding: 14px 16px;
+            border-bottom: 1px solid rgba(255,255,255,.08);
+            white-space: nowrap;
+        }
+
+        .about-table tbody td {
+            padding: 14px 16px;
+            border-bottom: 1px solid #eef0f4;
+            vertical-align: middle;
+            color: #111827;
+        }
+
+        .about-table tbody tr:hover {
+            background: #f8fafc;
+            transition: .2s ease;
+        }
+
+    .pill {
+        display: inline-flex;
+        align-items: center;
+        padding: 6px 10px;
+        border-radius: 999px;
+        background: #eef2ff;
+        color: #3730a3;
+        font-weight: 700;
+        font-size: 12px;
+    }
+
+    .title-main {
+        font-weight: 800;
+        color: #111827;
+    }
+
+    .text-clamp {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        color: #374151;
+        max-width: 560px;
+        word-break: break-word;
+    }
+
+    .actions {
+        display: flex;
+        gap: 10px;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+    }
+
+    /* Buttons */
+    .about-add {
+        border-radius: 12px !important;
+        padding: 10px 14px !important;
+        font-weight: 700 !important;
+        box-shadow: 0 8px 18px rgba(37,99,235,.18);
+    }
+
+    .btn-soft-success, .btn-soft-danger {
+        border-radius: 12px;
+        padding: 8px 12px;
+        font-weight: 700;
+        border: 1px solid transparent;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 86px;
+    }
+
+    .btn-soft-success {
+        background: #ecfdf5;
+        border-color: #a7f3d0;
+        color: #065f46;
+    }
+
+        .btn-soft-success:hover {
+            background: #d1fae5;
+            color: #064e3b;
+        }
+
+    .btn-soft-danger {
+        background: #fff1f2;
+        border-color: #fecdd3;
+        color: #9f1239;
+    }
+
+        .btn-soft-danger:hover {
+            background: #ffe4e6;
+            color: #881337;
+        }
+
+    .about-footer {
+        padding: 12px 16px;
+        color: #6b7280;
+        border-top: 1px solid #eef0f4;
+        background: #fff;
+    }
+
+    /* Responsive */
+    @@media (max-width: 900px) {
+        .about-table thead {
+            display: none;
+        }
+
+        .about-table, .about-table tbody, .about-table tr, .about-table td {
+            display: block;
+            width: 100%;
+        }
+
+            .about-table tr {
+                border-bottom: 1px solid #eef0f4;
+                padding: 10px 12px;
+            }
+
+            .about-table td {
+                border: none;
+                padding: 10px 4px;
+            }
+
+                .about-table td::before {
+                    content: attr(data-label);
+                    display: block;
+                    font-size: 12px;
+                    color: #6b7280;
+                    font-weight: 700;
+                    margin-bottom: 6px;
+                    text-transform: uppercase;
+                    letter-spacing: .02em;
+                }
+
+        .text-clamp {
+            max-width: 100%;
+        }
+    }
+</style>
+
+<script>
+    // Basit client-side arama filtreleme
+    (function () {
+        const input = document.getElementById("chefSearch");
+        const table = document.getElementById("chefTable");
+        if (!input || !table) return;
+
+        input.addEventListener("input", function () {
+            const q = this.value.toLowerCase().trim();
+            const rows = table.querySelectorAll("tbody tr");
+
+            rows.forEach(r => {
+                const text = r.innerText.toLowerCase();
+                r.style.display = text.includes(q) ? "" : "none";
+            });
+        });
+    })();
+</script>

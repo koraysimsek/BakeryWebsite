@@ -1,0 +1,46 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+@await  Component.InvokeAsync("AdminHead")
+<body>
+    <div class="container-scroller">
+        <!-- partial:partials/_navbar.html -->
+        @await Component.InvokeAsync("AdminNavbar")
+        <!-- partial -->
+        <div class="container-fluid page-body-wrapper">
+            <!-- partial:partials/_sidebar.html -->
+            @await Component.InvokeAsync("AdminSidebar")
+            <!-- partial -->
+            <div class="main-panel">
+
+                @RenderBody()
+
+            </div>
+            <!-- main-panel ends -->
+        </div>
+        <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <script src="~/purpleadmin-free-admin-template-1.0.0/assets/vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <script src="~/purpleadmin-free-admin-template-1.0.0/assets/vendors/chart.js/chart.umd.js"></script>
+    <script src="~/purpleadmin-free-admin-template-1.0.0/assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="~/purpleadmin-free-admin-template-1.0.0/assets/js/off-canvas.js"></script>
+    <script src="~/purpleadmin-free-admin-template-1.0.0/assets/js/misc.js"></script>
+    <script src="~/purpleadmin-free-admin-template-1.0.0/assets/js/settings.js"></script>
+    <script src="~/purpleadmin-free-admin-template-1.0.0/assets/js/todolist.js"></script>
+    <script src="~/purpleadmin-free-admin-template-1.0.0/assets/js/jquery.cookie.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page -->
+    <script src="~/purpleadmin-free-admin-template-1.0.0/assets/js/dashboard.js"></script>
+    <!-- End custom js for this page -->
+</body>
+</html>

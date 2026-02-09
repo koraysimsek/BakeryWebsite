@@ -1,0 +1,51 @@
+﻿using Bakery.WebApi.Context;
+using Bakery.WebApi.Entities;
+using Microsoft.AspNetCore.Mvc;
+
+namespace Bakery.WebApi.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class ServiceController : ControllerBase
+    {
+        private readonly BakeryContext _context;
+
+        public ServiceController(BakeryContext context)
+        {
+            _context = context;
+        }
+
+        [HttpGet]
+        public IActionResult ListService()
+        {
+            var values = _context.Services.ToList();
+            return Ok(values);
+        }
+
+        [HttpPost]
+        public IActionResult CreateService(Service service)
+        {
+            _context.Services.Add(service);
+            _context.SaveChanges();
+            return Ok("Ekleme işlemi başarıyla gerçekleşti");
+        }
+
+        [HttpPut]
+        public IActionResult UpdateService(Service service)
+        {
+            _context.Services.Update(service);
+            _context.SaveChanges();
+            return Ok("Güncelleme işlemi başarıyla gerçekleşti");
+        }
+
+        [HttpDelete]
+        public IActionResult DeleteService(int id)
+        {
+            var values = _context.Services.Find(id);
+
+            _context.Services.Remove(values);
+            _context.SaveChanges();
+            return Ok("Silme işlemi başarıyla gerçekleşti");
+        }
+    }
+}

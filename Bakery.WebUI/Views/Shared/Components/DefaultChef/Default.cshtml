@@ -1,0 +1,28 @@
+﻿@using System.Globalization
+@model List<Bakery.WebUI.Dtos.Chefs.ResultChefDto>
+
+@{
+    Layout = null;
+    var i = 0;
+}
+
+<div class="container">
+    <div class="row g-4">
+        @foreach (var item in Model)
+        {
+            var delay = (0.1 + (i * 0.2)).ToString("0.0", CultureInfo.InvariantCulture) + "s";
+            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="@delay">
+                <div class="team-item text-center rounded overflow-hidden">
+                    <img class="img-fluid" src="@item.imageUrl" alt="">
+                    <div class="team-text">
+                        <div class="team-title">
+                            <h5>@item.nameSurname</h5>
+                            <span>@item.title</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            i++;
+        }
+    </div>
+</div>

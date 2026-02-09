@@ -77,5 +77,14 @@ namespace Bakery.WebUI.Controllers
 
             return View();
         }
+
+        public async Task<IActionResult> DeleteSubscribe(int id)
+        {
+            var client = _httpClientFactory.CreateClient();
+
+            await client.DeleteAsync($"https://localhost:7210/api/Subscribe?id={id}");
+
+            return RedirectToAction("ListSubscribe");
+        }
     }
 }

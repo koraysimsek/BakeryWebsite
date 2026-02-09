@@ -78,5 +78,14 @@ namespace Bakery.WebUI.Controllers
 
             return View();
         }
+
+        public async Task<IActionResult> DeleteTestimonial(int id)
+        {
+            var client = _httpClientFactory.CreateClient();
+
+            await client.DeleteAsync($"https://localhost:7210/api/Testimonial?id={id}");
+
+            return RedirectToAction("ListTestimonial");
+        }
     }
 }

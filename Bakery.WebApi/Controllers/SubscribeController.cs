@@ -23,6 +23,14 @@ namespace Bakery.WebApi.Controllers
             return Ok(values);
         }
 
+        [HttpGet("{id}")]
+        public IActionResult GetById(int id)
+        {
+            var subscribe = _context.Subscribes.Find(id);
+            return Ok(subscribe);
+        }
+
+
         [HttpPost]
         public IActionResult CreateSubscribe(Subscribe subscribe)
         {

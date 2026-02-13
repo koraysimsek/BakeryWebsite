@@ -22,6 +22,13 @@ namespace Bakery.WebApi.Controllers
             return Ok(values);
         }
 
+        [HttpGet("{id}")]
+        public IActionResult GetById(int id)
+        {
+            var service = _context.Services.Find(id);
+            return Ok(service);
+        }
+
         [HttpPost]
         public IActionResult CreateService(Service service)
         {

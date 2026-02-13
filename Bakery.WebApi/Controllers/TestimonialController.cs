@@ -19,8 +19,15 @@ namespace Bakery.WebApi.Controllers
         [HttpGet]
         public IActionResult ListTestimonial()
         {
-            var values = _context.Subscribes.ToList();
+            var values = _context.Testimonials.ToList();
             return Ok(values);
+        }
+
+        [HttpGet("{id}")]
+        public IActionResult GetById(int id)
+        {
+            var testimonial = _context.Testimonials.Find(id);
+            return Ok(testimonial);
         }
 
         [HttpPost]

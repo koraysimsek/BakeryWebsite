@@ -23,6 +23,13 @@ namespace Bakery.WebApi.Controllers
             return Ok(values);
         }
 
+        [HttpGet("{id}")]
+        public IActionResult GetById(int id)
+        {
+            var slider = _context.Sliders.Find(id);
+            return Ok(slider);
+        }
+
         [HttpPost]
         public IActionResult CreateSlider(Slider slider)
         {

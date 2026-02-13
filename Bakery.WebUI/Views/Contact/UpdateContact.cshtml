@@ -1,7 +1,7 @@
-﻿@model Bakery.WebUI.Dtos.Abouts.UpdateAboutDto
+﻿@model Bakery.WebUI.Dtos.Contacts.UpdateContactDto
 
 @{
-    ViewData["Title"] = "UpdateAbout";
+    ViewData["Title"] = "UpdateContact";
     Layout = "~/Views/AdminLayout/Index.cshtml";
 }
 
@@ -14,59 +14,30 @@
         <!-- Header -->
         <div class="text-center mb-8">
             <h1 class="text-3xl font-extrabold text-gray-800">
-                Hakkımda Güncelle
+                İletişim Güncelle
             </h1>
             <p class="text-gray-500 mt-1">
-                Hakkımda bilgilerini güncelleyin
+                Telefon bilgisini güncelleyin
             </p>
         </div>
 
         <form method="post" class="space-y-6">
 
             <!-- Hidden Id -->
-            @Html.HiddenFor(x => x.aboutId)
+            @Html.HiddenFor(x => x.contactId)
 
-            <!-- Başlık -->
+            <!-- Phone -->
             <div>
                 <label class="block text-sm font-semibold text-gray-700 mb-1">
-                    Başlık
+                    Telefon Numarası
                 </label>
                 <input type="text"
-                       asp-for="title"
+                       asp-for="phoneNumber"
                        class="w-full px-4 py-2.5 rounded-lg border border-gray-300
                               text-gray-900
                               focus:ring-2 focus:ring-[#111827]
                               focus:border-[#111827]
                               outline-none transition" />
-            </div>
-
-            <!-- Açıklama -->
-            <div>
-                <label class="block text-sm font-semibold text-gray-700 mb-1">
-                    Açıklama
-                </label>
-                <textarea asp-for="description"
-                          rows="4"
-                          class="w-full px-4 py-2.5 rounded-lg border border-gray-300
-                                 text-gray-900
-                                 focus:ring-2 focus:ring-[#111827]
-                                 focus:border-[#111827]
-                                 outline-none transition"></textarea>
-            </div>
-
-            <!-- Liste -->
-            <div>
-                <label class="block text-sm font-semibold text-gray-700 mb-1">
-                    Liste
-                </label>
-                <textarea asp-for="aboutList"
-                          rows="3"
-                          placeholder="Her maddeyi virgül veya satır ile ayırabilirsiniz"
-                          class="w-full px-4 py-2.5 rounded-lg border border-gray-300
-                                 text-gray-900
-                                 focus:ring-2 focus:ring-[#111827]
-                                 focus:border-[#111827]
-                                 outline-none transition"></textarea>
             </div>
 
             <!-- Button -->
@@ -91,5 +62,4 @@
     </div>
 
 </div>
-
 

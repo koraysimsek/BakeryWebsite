@@ -1,7 +1,7 @@
-﻿@model Bakery.WebUI.Dtos.Abouts.UpdateAboutDto
+﻿@model Bakery.WebUI.Dtos.Services.UpdateServiceDto
 
 @{
-    ViewData["Title"] = "UpdateAbout";
+    ViewData["Title"] = "UpdateService";
     Layout = "~/Views/AdminLayout/Index.cshtml";
 }
 
@@ -9,64 +9,93 @@
 
 <div class="min-h-screen flex items-center justify-center bg-[#4b5563] p-6">
 
-    <div class="w-full max-w-lg bg-white rounded-2xl shadow-xl p-8">
+    <div class="w-full max-w-2xl bg-white rounded-2xl shadow-xl p-8">
 
         <!-- Header -->
         <div class="text-center mb-8">
             <h1 class="text-3xl font-extrabold text-gray-800">
-                Hakkımda Güncelle
+                Servis Güncelle
             </h1>
             <p class="text-gray-500 mt-1">
-                Hakkımda bilgilerini güncelleyin
+                Servis bilgilerini güncelleyin
             </p>
         </div>
 
         <form method="post" class="space-y-6">
 
             <!-- Hidden Id -->
-            @Html.HiddenFor(x => x.aboutId)
+            @Html.HiddenFor(x => x.serviceId)
 
-            <!-- Başlık -->
+            <!-- Title -->
             <div>
                 <label class="block text-sm font-semibold text-gray-700 mb-1">
                     Başlık
                 </label>
-                <input type="text"
-                       asp-for="title"
+                <input asp-for="title"
                        class="w-full px-4 py-2.5 rounded-lg border border-gray-300
-                              text-gray-900
                               focus:ring-2 focus:ring-[#111827]
                               focus:border-[#111827]
                               outline-none transition" />
             </div>
 
-            <!-- Açıklama -->
+            <!-- Description -->
             <div>
                 <label class="block text-sm font-semibold text-gray-700 mb-1">
                     Açıklama
                 </label>
-                <textarea asp-for="description"
-                          rows="4"
+                <textarea asp-for="description" rows="3"
                           class="w-full px-4 py-2.5 rounded-lg border border-gray-300
-                                 text-gray-900
                                  focus:ring-2 focus:ring-[#111827]
                                  focus:border-[#111827]
                                  outline-none transition"></textarea>
             </div>
 
-            <!-- Liste -->
+            <!-- Service Name -->
             <div>
                 <label class="block text-sm font-semibold text-gray-700 mb-1">
-                    Liste
+                    Servis Adı
                 </label>
-                <textarea asp-for="aboutList"
-                          rows="3"
-                          placeholder="Her maddeyi virgül veya satır ile ayırabilirsiniz"
+                <input asp-for="serviceName"
+                       class="w-full px-4 py-2.5 rounded-lg border border-gray-300
+                              focus:ring-2 focus:ring-[#111827]
+                              focus:border-[#111827]
+                              outline-none transition" />
+            </div>
+
+            <!-- Service Description -->
+            <div>
+                <label class="block text-sm font-semibold text-gray-700 mb-1">
+                    Servis Açıklaması
+                </label>
+                <textarea asp-for="serviceDescription" rows="3"
                           class="w-full px-4 py-2.5 rounded-lg border border-gray-300
-                                 text-gray-900
                                  focus:ring-2 focus:ring-[#111827]
                                  focus:border-[#111827]
                                  outline-none transition"></textarea>
+            </div>
+
+            <!-- Icon URL -->
+            <div>
+                <label class="block text-sm font-semibold text-gray-700 mb-1">
+                    İkon URL
+                </label>
+                <input asp-for="serviceIconUrl"
+                       class="w-full px-4 py-2.5 rounded-lg border border-gray-300
+                              focus:ring-2 focus:ring-[#111827]
+                              focus:border-[#111827]
+                              outline-none transition" />
+            </div>
+
+            <!-- Image URL -->
+            <div>
+                <label class="block text-sm font-semibold text-gray-700 mb-1">
+                    Resim URL
+                </label>
+                <input asp-for="imageUrl"
+                       class="w-full px-4 py-2.5 rounded-lg border border-gray-300
+                              focus:ring-2 focus:ring-[#111827]
+                              focus:border-[#111827]
+                              outline-none transition" />
             </div>
 
             <!-- Button -->
@@ -91,5 +120,4 @@
     </div>
 
 </div>
-
 

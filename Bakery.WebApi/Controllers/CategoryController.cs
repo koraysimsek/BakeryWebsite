@@ -23,6 +23,13 @@ namespace Bakery.WebApi.Controllers
             return Ok(values);
         }
 
+        [HttpGet("{id}")]
+        public IActionResult GetById(int id)
+        {
+            var category = _context.Categories.Find(id);
+            return Ok(category);
+        }
+
         [HttpPost]
         public IActionResult CreateCategory(Category category)
         {

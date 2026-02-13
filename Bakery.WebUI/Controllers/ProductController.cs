@@ -1,5 +1,7 @@
-﻿using Bakery.WebUI.Dtos.Products;
+﻿using Bakery.WebUI.Dtos.Categories;
+using Bakery.WebUI.Dtos.Products;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Newtonsoft.Json;
 using System.Text;
 
@@ -17,7 +19,7 @@ namespace Bakery.WebUI.Controllers
         public async Task<IActionResult> ListProduct()
         {
             var client = _httpClientFactory.CreateClient();
-            var response = await client.GetAsync("https://localhost:7210/api/Product");
+            var response = await client.GetAsync("https://localhost:7210/api/Product/with-category");
 
             if (response.IsSuccessStatusCode)
             {
@@ -30,8 +32,21 @@ namespace Bakery.WebUI.Controllers
         }
 
         [HttpGet]
-        public IActionResult CreateProduct()
+        public async Task<IActionResult> CreateProduct()
         {
+            var client = _httpClientFactory.CreateClient();
+
+            // API'den kategorileri çek
+            var response = await client.GetAsync("https://localhost:7210/api/Category");
+            var jsonData = await response.Content.ReadAsStringAsync();
+            var categories = JsonConvert.DeserializeObject<List<ResultCategoryDto>>(jsonData);
+
+            ViewBag.Categories = categories.Select(x => new SelectListItem
+            {
+                Text = x.categoryName,
+                Value = x.categoryId.ToString()
+            }).ToList();
+
             return View();
         }
 

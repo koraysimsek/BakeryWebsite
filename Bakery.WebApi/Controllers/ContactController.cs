@@ -23,6 +23,13 @@ namespace Bakery.WebApi.Controllers
             return Ok(values);
         }
 
+        [HttpGet("{id}")]
+        public IActionResult GetById(int id)
+        {
+            var contact = _context.Contacts.Find(id);
+            return Ok(contact);
+        }
+
         [HttpPost]
         public IActionResult CreateContact(Contact contact)
         {

@@ -22,6 +22,13 @@ namespace Bakery.WebApi.Controllers
             return Ok(values);
         }
 
+        [HttpGet("{id}")]
+        public IActionResult GetById(int id)
+        {
+            var about = _context.Abouts.Find(id);
+            return Ok(about);
+        }
+
         [HttpPost]
         public IActionResult CreateAbout(About about)
         {

@@ -71,7 +71,7 @@ namespace Bakery.WebUI.Controllers
 
             var response = await client.PutAsync("https://localhost:7210/api/Chef/", content);
 
-            if(response.IsSuccessStatusCode)
+            if (response.IsSuccessStatusCode)
             {
                 return RedirectToAction("ListChef");
             }

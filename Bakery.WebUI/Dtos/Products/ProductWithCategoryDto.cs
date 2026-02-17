@@ -10,6 +10,6 @@ namespace Bakery.WebUI.Dtos.Products
         public string? imageUrl { get; set; }
         public int categoryId { get; set; }
 
-        public ResultCategoryDto? Category { get; set; }
+        public string? categoryName { get; set; }
     }
 }

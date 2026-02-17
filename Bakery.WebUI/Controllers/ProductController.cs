@@ -70,12 +70,26 @@ namespace Bakery.WebUI.Controllers
         public async Task<IActionResult> UpdateProduct(int id)
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:7210/api/Product/" + id);
-            var jsonData = await responseMessage.Content.ReadAsStringAsync();
-            var values = JsonConvert.DeserializeObject<UpdateProductDto>(jsonData);
+
+            // Ürünü çek
+            var productResponse = await client.GetAsync("https://localhost:7210/api/Product/" + id);
+            var productJson = await productResponse.Content.ReadAsStringAsync();
+            var values = JsonConvert.DeserializeObject<UpdateProductDto>(productJson);
+
+            // Kategorileri çek
+            var categoryResponse = await client.GetAsync("https://localhost:7210/api/Category");
+            var categoryJson = await categoryResponse.Content.ReadAsStringAsync();
+            var categories = JsonConvert.DeserializeObject<List<ResultCategoryDto>>(categoryJson);
+
+            ViewBag.Categories = categories.Select(x => new SelectListItem
+            {
+                Text = x.categoryName,
+                Value = x.categoryId.ToString()
+            }).ToList();
 
             return View(values);
         }
+
 
         [HttpPost]
         public async Task<IActionResult> UpdateProduct(UpdateProductDto model)

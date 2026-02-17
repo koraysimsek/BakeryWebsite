@@ -1,4 +1,4 @@
-﻿using Bakery.WebUI.Dtos.Categories;
+﻿using Bakery.WebUI.Dtos.Products;
 
 namespace Bakery.WebUI.Dtos.Products
 {

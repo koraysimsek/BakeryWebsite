@@ -59,8 +59,8 @@ namespace Bakery.WebApi.Controllers
         [HttpGet("CountChef")]
         public IActionResult GetChef()
         {
-            var productChef = _context.Chefs.Count();
-            return Ok(productChef);
+            var chefCount = _context.Chefs.Count();
+            return Ok(chefCount);
         }
 
     }

@@ -26,6 +26,11 @@ namespace Bakery.WebUI.ViewComponents
 
             ViewBag.ChefCount = jsonData1;
 
+            var response2 = await client.GetAsync("https://localhost:7210/api/Service/CountService");
+            var jsonData2 = await response1.Content.ReadAsStringAsync();
+
+            ViewBag.ChefCount = jsonData1;
+
             return View();
         }
     }

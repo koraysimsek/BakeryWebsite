@@ -26,6 +26,7 @@ namespace Bakery.WebApi.Controllers
                 Name = p.Name,
                 Price = p.Price,
                 ImageUrl = p.ImageUrl,
+                Description = p.Description,
                 CategoryName = p.Category != null ? p.Category.CategoryName : null,
             });
 

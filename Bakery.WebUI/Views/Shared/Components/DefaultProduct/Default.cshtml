@@ -1,5 +1,5 @@
 ﻿@using Bakery.WebUI.Dtos.Products
-@model List<Bakery.WebUI.Dtos.Products.ResultProductDto>
+@model List<Bakery.WebUI.Dtos.Products.ProductWithCategoryDto>
 
 @{
 	Layout = null;
@@ -11,13 +11,13 @@
 		<h1 class="display-6 mb-4">Ürünlermizi Keşfedin</h1>
 	</div>
 	<div class="row g-4">
-		@foreach (var item in Model ?? new List<ResultProductDto>())
+		@foreach (var item in Model ?? new List<ProductWithCategoryDto>())
 
 		{
 			<div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
 				<div class="product-item d-flex flex-column bg-white rounded overflow-hidden h-100">
 					<div class="text-center p-4">
-						<div class="d-inline-block border border-primary rounded-pill px-3 mb-3">@item.price</div>
+						<div class="d-inline-block border border-primary rounded-pill px-3 mb-3">@item.price ₺</div>
 						<h3 class="mb-3">@item.name</h3>
 						<span>@item.description</span>
 					</div>

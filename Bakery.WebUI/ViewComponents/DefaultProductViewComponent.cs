@@ -17,7 +17,7 @@ namespace Bakery.WebUI.ViewComponents
         public async Task<IViewComponentResult> InvokeAsync()
         {
             var client = _httpClientFactory.CreateClient();
-            var response = await client.GetAsync("https://localhost:7210/api/Product");
+            var response = await client.GetAsync("https://localhost:7210/api/Product/with-category");
 
             if (response.IsSuccessStatusCode)
             {

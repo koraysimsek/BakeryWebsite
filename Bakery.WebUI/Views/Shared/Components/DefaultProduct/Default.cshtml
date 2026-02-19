@@ -1,8 +1,10 @@
-﻿@using Bakery.WebUI.Dtos.Products
+﻿@using System.Globalization
+@using Bakery.WebUI.Dtos.Products
 @model Bakery.WebUI.Models.ProductListViewModel
 
 @{
     Layout = null;
+    var i = 0;
 }
 
 <section id="product">
@@ -22,7 +24,8 @@
     <div class="row g-4 product-container">
         @foreach (var item in Model.Products ?? new List<ProductWithCategoryDto>())
         {
-            <div class="col-lg-4 col-md-6 wow fadeInUp product-item-container" data-category="@item.CategoryId" data-wow-delay="0.1s">
+            var delay = (0.1 + (i * 0.2)).ToString("0.0", CultureInfo.InvariantCulture) + "s";
+            <div class="col-lg-4 col-md-6 wow fadeInUp product-item-container" data-category="@item.CategoryId" data-wow-delay="@delay">
                 <div class="product-item d-flex flex-column bg-white rounded overflow-hidden h-100">
                     <div class="text-center p-4">
                         <div class="d-inline-block border border-primary rounded-pill px-3 mb-3">@item.Price ₺</div>

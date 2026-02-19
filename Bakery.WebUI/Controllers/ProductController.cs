@@ -43,8 +43,8 @@ namespace Bakery.WebUI.Controllers
 
             ViewBag.Categories = categories.Select(x => new SelectListItem
             {
-                Text = x.categoryName,
-                Value = x.categoryId.ToString()
+                Text = x.CategoryName,
+                Value = x.CategoryId.ToString()
             }).ToList();
 
             return View();
@@ -83,8 +83,8 @@ namespace Bakery.WebUI.Controllers
 
             ViewBag.Categories = categories.Select(x => new SelectListItem
             {
-                Text = x.categoryName,
-                Value = x.categoryId.ToString()
+                Text = x.CategoryName,
+                Value = x.CategoryId.ToString()
             }).ToList();
 
             return View(values);

@@ -2,7 +2,9 @@
 {
     public class ResultCategoryDto
     {
-        public int categoryId { get; set; }
-        public string? categoryName { get; set; }
+        [Newtonsoft.Json.JsonProperty("categoryId")]
+        public int CategoryId { get; set; }
+        [Newtonsoft.Json.JsonProperty("categoryName")]
+        public string? CategoryName { get; set; }
     }
 }

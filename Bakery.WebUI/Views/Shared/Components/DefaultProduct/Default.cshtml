@@ -1,34 +1,75 @@
 ﻿@using Bakery.WebUI.Dtos.Products
-@model List<Bakery.WebUI.Dtos.Products.ProductWithCategoryDto>
+@model Bakery.WebUI.Models.ProductListViewModel
 
 @{
-	Layout = null;
+    Layout = null;
 }
 
 <section id="product">
-	<div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
-		<p class="text-primary text-uppercase mb-2">// Ürünlerimiz</p>
-		<h1 class="display-6 mb-4">Ürünlermizi Keşfedin</h1>
-	</div>
-	<div class="row g-4">
-		@foreach (var item in Model ?? new List<ProductWithCategoryDto>())
+    <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+        <p class="text-primary text-uppercase mb-2">// Ürünlerimiz</p>
+        <h1 class="display-6 mb-4">Ürünlermizi Keşfedin</h1>
+    </div>
 
-		{
-			<div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-				<div class="product-item d-flex flex-column bg-white rounded overflow-hidden h-100">
-					<div class="text-center p-4">
-						<div class="d-inline-block border border-primary rounded-pill px-3 mb-3">@item.price ₺</div>
-						<h3 class="mb-3">@item.name</h3>
-						<span>@item.description</span>
-					</div>
-					<div class="position-relative mt-auto">
-						<img class="img-fluid" src="@item.imageUrl" alt="">
-						<div class="product-overlay">
-							<a class="btn btn-lg-square btn-outline-light rounded-circle" href=""><i class="fa fa-eye text-primary"></i></a>
-						</div>
-					</div>
-				</div>
-			</div>
-		}
-	</div>
+    <div class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">
+        <button class="btn btn-outline-primary active m-1 filter-btn" data-filter="all">Tümü</button>
+        @foreach (var category in Model.Categories)
+        {
+            <button class="btn btn-outline-primary m-1 filter-btn" data-filter="@category.CategoryId">@category.CategoryName</button>
+        }
+    </div>
+
+    <div class="row g-4 product-container">
+        @foreach (var item in Model.Products ?? new List<ProductWithCategoryDto>())
+        {
+            <div class="col-lg-4 col-md-6 wow fadeInUp product-item-container" data-category="@item.CategoryId" data-wow-delay="0.1s">
+                <div class="product-item d-flex flex-column bg-white rounded overflow-hidden h-100">
+                    <div class="text-center p-4">
+                        <div class="d-inline-block border border-primary rounded-pill px-3 mb-3">@item.Price ₺</div>
+                        <h3 class="mb-3">@item.Name</h3>
+                        <span>@item.Description</span>
+                    </div>
+                    <div class="position-relative mt-auto">
+                        <img class="img-fluid" src="@item.ImageUrl" alt="">
+                        <div class="product-overlay">
+                            <a class="btn btn-lg-square btn-outline-light rounded-circle" href=""><i class="fa fa-eye text-primary"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
 </section>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const filterBtns = document.querySelectorAll(".filter-btn");
+        const productItems = document.querySelectorAll(".product-item-container");
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener("click", function () {
+                // Remove active class from all buttons
+                filterBtns.forEach(b => b.classList.remove("active"));
+                // Add active class to clicked button
+                this.classList.add("active");
+
+                const filterValue = this.getAttribute("data-filter");
+
+                productItems.forEach(item => {
+                    const itemCategory = item.getAttribute("data-category");
+
+                    if (filterValue === "all" || filterValue === itemCategory) {
+                        item.style.display = "block";
+                        // Re-trigger wow.js animation if needed, or simply show
+                         item.classList.add("wow", "fadeInUp");
+                         item.style.visibility = "visible";
+                         item.style.animationName = "fadeInUp";
+
+                    } else {
+                        item.style.display = "none";
+                    }
+                });
+            });
+        });
+    });
+</script>

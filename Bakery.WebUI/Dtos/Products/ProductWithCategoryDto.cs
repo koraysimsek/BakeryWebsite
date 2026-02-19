@@ -4,12 +4,19 @@ namespace Bakery.WebUI.Dtos.Products
 {
     public class ProductWithCategoryDto
     {
-        public int productId { get; set; }
-        public string? name { get; set; }
-        public decimal price { get; set; }
-        public string? imageUrl { get; set; }
-        public string? description { get; set; }
-        public int categoryId { get; set; }
-        public string? categoryName { get; set; }
+        [Newtonsoft.Json.JsonProperty("productId")]
+        public int ProductId { get; set; }
+        [Newtonsoft.Json.JsonProperty("name")]
+        public string? Name { get; set; }
+        [Newtonsoft.Json.JsonProperty("price")]
+        public decimal Price { get; set; }
+        [Newtonsoft.Json.JsonProperty("imageUrl")]
+        public string? ImageUrl { get; set; }
+        [Newtonsoft.Json.JsonProperty("description")]
+        public string? Description { get; set; }
+        [Newtonsoft.Json.JsonProperty("categoryId")]
+        public int CategoryId { get; set; }
+        [Newtonsoft.Json.JsonProperty("categoryName")]
+        public string? CategoryName { get; set; }
     }
 }

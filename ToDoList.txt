@@ -1,4 +1,3 @@
 subcribe kýsmýnda veri tabanýna mail gitmesini saðla 
 
-servis ekleme güncelleme düzelt
 

@@ -1,5 +1,4 @@
 subcribe kýsmýnda veri tabanýna mail gitmesini saðla 
 
-default ta categoriler ve ürünler gelmesini saðla
+servis ekleme güncelleme düzelt
 
-kategorileme yap ürünlerde

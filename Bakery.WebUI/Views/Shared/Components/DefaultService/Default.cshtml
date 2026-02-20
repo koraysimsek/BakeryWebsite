@@ -1,9 +1,7 @@
-﻿@using System.Globalization
-@model List<Bakery.WebUI.Dtos.Services.ResultServiceDto>
+﻿@model List<Bakery.WebUI.Dtos.Services.ResultServiceDto>
 
 @{
 	Layout = null;
-	var i = 0;
 }
 
 <section id="service">
@@ -12,21 +10,20 @@
 			<div class="row g-5">
 				<div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
 					<p class="text-primary text-uppercase mb-2">// Hizmetlerimiz</p>
-					<h1 class="display-6 mb-4">@Model[0].title</h1>
-					<p class="mb-5">@Model[0].description</p>
+					<h1 class="display-6 mb-4">@Model[0].Title</h1>
+					<p class="mb-5">@Model[0].Description</p>
 					<div class="row gy-5 gx-4">
 
 						@foreach (var item in Model)
 						{
-							var delay = (0.1 + (i * 0.2)).ToString("0.0", CultureInfo.InvariantCulture) + "s";
-							<div class="col-sm-6 wow fadeIn" data-wow-delay="@delay">
+							<div class="col-sm-6 wow fadeIn" data-wow-delay="0.1s">
 								<div class="d-flex align-items-center mb-3">
 									<div class="flex-shrink-0 btn-square bg-primary rounded-circle me-3">
-										<i class="@item.serviceIconUrl text-white"></i>
+										<i class="@item.ServiceIconUrl text-white"></i>
 									</div>
-									<h5 class="mb-0">@item.serviceName</h5>
+									<h5 class="mb-0">@item.ServiceName</h5>
 								</div>
-								<span>@item.serviceDescription</span>
+								<span>@item.ServiceDescription</span>
 							</div>
 						}
 

@@ -56,5 +56,12 @@ namespace Bakery.WebApi.Controllers
             _context.SaveChanges();
             return Ok("Silme işlemi başarıyla gerçekleşti");
         }
+
+        [HttpGet("CountSubscribe")]
+        public IActionResult GetSubscribe()
+        {
+            var subscribeCount = _context.Subscribes.Count();
+            return Ok(subscribeCount);
+        }
     }
 }

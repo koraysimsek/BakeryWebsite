@@ -72,5 +72,16 @@ namespace Bakery.WebApi.Controllers
             var productCount = _context.Products.Count();
             return Ok(productCount);
         }
+
+        [HttpGet("LastProduct")]
+        public IActionResult GetLastProduct()
+        {
+            var productLast = _context.Products
+                                      .OrderByDescending(x => x.ProductId)
+                                      .Select(x => x.Name)
+                                      .FirstOrDefault();
+
+            return Ok(productLast);
+        }
     }
 }

@@ -62,6 +62,5 @@ namespace Bakery.WebApi.Controllers
             var chefCount = _context.Chefs.Count();
             return Ok(chefCount);
         }
-
     }
 }

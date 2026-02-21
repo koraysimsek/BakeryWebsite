@@ -61,5 +61,16 @@ namespace Bakery.WebApi.Controllers
             var serviceCount = _context.Services.Count();
             return Ok(serviceCount);
         }
+
+        [HttpGet("LastService")]
+        public IActionResult GetLastProduct()
+        {
+            var serviceLast = _context.Services
+                                      .OrderByDescending(x => x.ServiceId)
+                                      .Select(x => x.ServiceName)
+                                      .FirstOrDefault();
+
+            return Ok(serviceLast);
+        }
     }
 }

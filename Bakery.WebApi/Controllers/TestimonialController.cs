@@ -55,5 +55,23 @@ namespace Bakery.WebApi.Controllers
             _context.SaveChanges();
             return Ok("Silme işlemi başarıyla gerçekleşti");
         }
+
+        [HttpGet("CountTestimonial")]
+        public IActionResult GetTestimonial()
+        {
+            var testimonialCount = _context.Testimonials.Count();
+            return Ok(testimonialCount);
+        }
+
+        [HttpGet("LastTestimonial")]
+        public IActionResult GetLastTestimonial()
+        {
+            var testimonialLast = _context.Testimonials
+                                      .OrderByDescending(x => x.TestimonialId)
+                                      .Select(x => x.NameSurname)
+                                      .FirstOrDefault();
+
+            return Ok(testimonialLast);
+        }
     }
 }

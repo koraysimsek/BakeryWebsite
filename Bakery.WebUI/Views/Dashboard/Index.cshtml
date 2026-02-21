@@ -1,154 +1,164 @@
-﻿
+﻿@model List<Bakery.WebUI.Dtos.Products.ProductWithCategoryDto>
+
 @{
-    ViewData["Title"] = "Index";
-    Layout = "~/Views/AdminLayout/Index.cshtml";
+	ViewData["Title"] = "Index";
+	Layout = "~/Views/AdminLayout/Index.cshtml";
 }
 
 
-                <div class="content-wrapper">
-                    <div class="page-header">
-                        <h3 class="page-title">
-                            <span class="page-title-icon bg-gradient-primary text-white me-2">
-                                <i class="mdi mdi-home"></i>
-                            </span> Dashboard
-                        </h3>
-                        <nav aria-label="breadcrumb">
-                            <ul class="breadcrumb">
-                                <li class="breadcrumb-item active" aria-current="page">
-                                    <span></span>Overview <i class="mdi mdi-alert-circle-outline icon-sm text-primary align-middle"></i>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-4 stretch-card grid-margin">
-                            <div class="card bg-gradient-danger card-img-holder text-white">
-                                <div class="card-body">
-                                    <img src="assets/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image" />
-                                    <h4 class="font-weight-normal mb-3">
-                                        Weekly Sales <i class="mdi mdi-chart-line mdi-24px float-end"></i>
-                                    </h4>
-                                    <h2 class="mb-5">@ViewBag.ProductCount</h2>
-                                    <h6 class="card-text">Increased by 60%</h6>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 stretch-card grid-margin">
-                            <div class="card bg-gradient-info card-img-holder text-white">
-                                <div class="card-body">
-                                    <img src="assets/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image" />
-                                    <h4 class="font-weight-normal mb-3">
-                                        Weekly Orders <i class="mdi mdi-bookmark-outline mdi-24px float-end"></i>
-                                    </h4>
-                                    <h2 class="mb-5">45,6334</h2>
-                                    <h6 class="card-text">Decreased by 10%</h6>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 stretch-card grid-margin">
-                            <div class="card bg-gradient-success card-img-holder text-white">
-                                <div class="card-body">
-                                    <img src="assets/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image" />
-                                    <h4 class="font-weight-normal mb-3">
-                                        Visitors Online <i class="mdi mdi-diamond mdi-24px float-end"></i>
-                                    </h4>
-                                    <h2 class="mb-5">95,5741</h2>
-                                    <h6 class="card-text">Increased by 5%</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-7 grid-margin stretch-card">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="clearfix">
-                                        <h4 class="card-title float-start">Visit And Sales Statistics</h4>
-                                        <div id="visit-sale-chart-legend" class="rounded-legend legend-horizontal legend-top-right float-end"></div>
-                                    </div>
-                                    <canvas id="visit-sale-chart" class="mt-4"></canvas>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-5 grid-margin stretch-card">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h4 class="card-title">Traffic Sources</h4>
-                                    <div class="doughnutjs-wrapper d-flex justify-content-center">
-                                        <canvas id="traffic-chart"></canvas>
-                                    </div>
-                                    <div id="traffic-chart-legend" class="rounded-legend legend-vertical legend-bottom-left pt-4"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12 grid-margin">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h4 class="card-title">Recent Tickets</h4>
-                                    <div class="table-responsive">
-                                        <table class="table">
-                                            <thead>
-                                                <tr>
-                                                    <th> Assignee </th>
-                                                    <th> Subject </th>
-                                                    <th> Status </th>
-                                                    <th> Last Update </th>
-                                                    <th> Tracking ID </th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>
-                                                        <img src="assets/images/faces/face1.jpg" class="me-2" alt="image"> David Grey
-                                                    </td>
-                                                    <td> Fund is not recieved </td>
-                                                    <td>
-                                                        <label class="badge badge-gradient-success">DONE</label>
-                                                    </td>
-                                                    <td> Dec 5, 2017 </td>
-                                                    <td> WD-12345 </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <img src="assets/images/faces/face2.jpg" class="me-2" alt="image"> Stella Johnson
-                                                    </td>
-                                                    <td> High loading time </td>
-                                                    <td>
-                                                        <label class="badge badge-gradient-warning">PROGRESS</label>
-                                                    </td>
-                                                    <td> Dec 12, 2017 </td>
-                                                    <td> WD-12346 </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <img src="assets/images/faces/face3.jpg" class="me-2" alt="image"> Marina Michel
-                                                    </td>
-                                                    <td> Website down for one week </td>
-                                                    <td>
-                                                        <label class="badge badge-gradient-info">ON HOLD</label>
-                                                    </td>
-                                                    <td> Dec 16, 2017 </td>
-                                                    <td> WD-12347 </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <img src="assets/images/faces/face4.jpg" class="me-2" alt="image"> John Doe
-                                                    </td>
-                                                    <td> Loosing control on server </td>
-                                                    <td>
-                                                        <label class="badge badge-gradient-danger">REJECTED</label>
-                                                    </td>
-                                                    <td> Dec 3, 2017 </td>
-                                                    <td> WD-12348 </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
+<div class="content-wrapper">
+	<div class="page-header">
+		<h3 class="page-title">
+			<span class="page-title-icon bg-gradient-primary text-white me-2">
+				<i class="mdi mdi-home"></i>
+			</span> İstatistikler
+		</h3>
+	</div>
+	<div class="row">
+		<!-- Şefler -->
+		<div class="col-md-4 stretch-card grid-margin">
+			<div class="card bg-gradient-primary card-img-holder text-white">
+				<div class="card-body">
+					<h4 class="font-weight-normal mb-3">
+						Şefler <i class="mdi mdi-chef-hat mdi-24px float-end"></i>
+					</h4>
+					<h2 class="mb-5">@ViewBag.ChefCount</h2>
+				</div>
+			</div>
+		</div>
+
+		<!-- Kategoriler -->
+		<div class="col-md-4 stretch-card grid-margin">
+			<div class="card bg-gradient-info card-img-holder text-white">
+				<div class="card-body">
+					<h4 class="font-weight-normal mb-3">
+						Kategoriler <i class="mdi mdi-folder-multiple mdi-24px float-end"></i>
+					</h4>
+					<h2 class="mb-5">@ViewBag.CategoryCount</h2>
+				</div>
+			</div>
+		</div>
+
+		<!-- Aboneler -->
+		<div class="col-md-4 stretch-card grid-margin">
+			<div class="card bg-gradient-warning card-img-holder text-white">
+				<div class="card-body">
+					<h4 class="font-weight-normal mb-3">
+						Abone Sayısı <i class="mdi mdi-email-outline mdi-24px float-end"></i>
+					</h4>
+					<h2 class="mb-5">@ViewBag.SubscribeCount</h2>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<!-- Ürünler -->
+		<div class="col-md-4 stretch-card grid-margin">
+			<div class="card bg-gradient-danger card-img-holder text-white">
+				<div class="card-body">
+					<h4 class="font-weight-normal mb-3">
+						Ürünler <i class="mdi mdi-cake-variant mdi-24px float-end"></i>
+					</h4>
+					<h2 class="mb-3">@ViewBag.ProductCount</h2>
+					<h6 class="card-text">
+						Son Eklenen Ürün: @ViewBag.ProductLast
+					</h6>
+				</div>
+			</div>
+		</div>
+
+		<!-- Hizmetler -->
+		<div class="col-md-4 stretch-card grid-margin">
+			<div class="card bg-gradient-success card-img-holder text-white">
+				<div class="card-body">
+					<h4 class="font-weight-normal mb-3">
+						Hizmetler <i class="mdi mdi-tools mdi-24px float-end"></i>
+					</h4>
+					<h2 class="mb-3">@ViewBag.ServiceCount</h2>
+					<h6 class="card-text">
+						Son Eklenen Hizmet: @ViewBag.ServiceLast
+					</h6>
+				</div>
+			</div>
+		</div>
+
+		<!-- Referanslar -->
+		<div class="col-md-4 stretch-card grid-margin">
+			<div class="card bg-gradient-secondary card-img-holder text-white">
+				<div class="card-body">
+					<h4 class="font-weight-normal mb-3">
+						Referanslar <i class="mdi mdi-star-circle mdi-24px float-end"></i>
+					</h4>
+					<h2 class="mb-3">@ViewBag.TestimonialCount</h2>
+					<h6 class="card-text">
+						Son Referans: @ViewBag.TestimonialLast
+					</h6>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-12 grid-margin">
+			<div class="card">
+				<div class="card-body">
+					<h4 class="card-title">Son Eklenen 5 Ürün</h4>
+					<br />
+					<div class="table-responsive">
+						<table class="table">
+							<thead>
+								<tr>
+									<th style="width: 90px;">#</th>
+									<th>Ürün Adı</th>
+									<th>Fiyat</th>
+									<th>Kategori</th>
+									<th>Açıklama</th>
+									<th>Görsel</th>
+								</tr>
+							</thead>
+							<tbody>
+
+								@foreach (var item in Model)
+								{
+									<tr>
+										<td>
+											<span class="pill">@item.ProductId</span>
+										</td>
+
+										<td class="col-title">
+											<div class="title-main">@item.Name</div>
+										</td>
+
+										<td>
+											@item.Price ₺
+										</td>
+
+										<td>
+											<span class="text-xs font-semibold text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full">
+												@item.CategoryName
+											</span>
+										</td>
+
+										<td class="col-desc">
+											<div class="text-clamp">@item.Description</div>
+										</td>
+
+										<td>
+											<img src="@item.ImageUrl"
+												 alt="Product Image"
+												 style="width:70px;height:70px;object-fit:cover;border-radius:12px;border:1px solid #e5e7eb;box-shadow:0 4px 10px rgba(0,0,0,0.08);" />
+										</td>
+									</tr>
+								}
+							</tbody>
+						</table>
+						<br />
+						<a href="/Product/ListProduct" class="btn btn-success">
+							Ürünleri Düzenle
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

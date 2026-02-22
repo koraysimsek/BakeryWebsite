@@ -1,4 +1,4 @@
-# 🍞 Bakery – Dinamik Unlu Mamüller Web Uygulaması & Yönetim Paneli
+# 🍞 Bakery – Dinamik / Unlu Mamüller Web Uygulaması & Yönetim Paneli
 Bu proje; fırın, pastane veya cafe işletmelerinin dijital varlıklarını yönetebilmesi için geliştirilmiş, n-tier arayüz mimarisine (Web API ve Web UI katmanlı) sahip, dinamik ve modern bir web uygulamasıdır.
 
 Uygulama, sadece bir tanıtım sitesi olmanın ötesinde; şef kadrosu, ürün katalogu, hizmetler, müşteri geri bildirimleri ve abone yönetimi gibi tüm süreçlerin merkezi bir Yönetim Paneli (PurpleAdmin) üzerinden kontrol edilmesine olanak tanır.

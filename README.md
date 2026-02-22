@@ -49,6 +49,8 @@ Web sitesinin her bir bölümü (Hakkımızda, Hizmetler, Slider vb.) kendi iş 
 
 <img width="1907" height="1077" alt="image" src="https://github.com/user-attachments/assets/7fc14a2f-997e-4c1e-89f6-a5606a7781e0" />
 
+<img width="1918" height="1078" alt="image" src="https://github.com/user-attachments/assets/54fdd5fd-f0f9-45e4-a289-961f8fcbe02b" />
+
 # 🔑 Yönetim Paneli (PurpleAdmin)
 
 <img width="1905" height="1079" alt="image" src="https://github.com/user-attachments/assets/42b12a44-24c3-4813-ac74-3dbe8ace1a87" />

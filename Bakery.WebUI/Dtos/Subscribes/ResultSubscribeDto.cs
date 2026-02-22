@@ -2,7 +2,7 @@
 {
     public class ResultSubscribeDto
     {
-        public int subscribeId { get; set; }
-        public string email { get; set; }
+        public int SubscribeId { get; set; }
+        public string Email { get; set; }
     }
 }
